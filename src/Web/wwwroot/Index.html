@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <base href="/" />
+    <meta charset="utf-8" />
+    <title></title>
+    
+    <script src="lib/npmlibs/es6-shim/es6-shim.js"></script>
+    <script src="lib/npmlibs/es6-promise/es6-promise.js"></script>
+    <script src="lib/npmlibs/systemjs/system-polyfills.src.js"></script>
+    <script src="lib/npmlibs/reflect-metadata/Reflect.js"></script>
+    <script src="lib/npmlibs/systemjs/system.src.js"></script>
+    <script src="lib/npmlibs/zonejs/zone.js"></script>
+
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="lib/system.config.js"></script>
+    
+    <script>
+        System.import('app').then(null, console.error.bind(console));
+    </script>
+</head>
+<body>
+    <my-app>Loading...</my-app>
+    <div id="sse">
+        <a href="javascript:WebSocketTest()">Run WebSocket</a>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+         function WebSocketTest()
+         {
+            if ("WebSocket" in window)
+            {
+                var url = "ws://" + window.location.host + "/restaurant-socket";
+                alert("WebSocket is supported by your Browser!  " + url);
+                
+               // Let us open a web socket
+               var ws = new WebSocket(url);
+
+               ws.onopen = function()
+               {
+                  // Web Socket is connected, send data using send()
+                  ws.send("Message to send");
+                  alert("Message is sent...");
+               };
+
+               ws.onmessage = function (evt)
+               {
+                  var received_msg = evt.data;
+                  alert("Message is received...");
+               };
+
+               ws.onclose = function()
+               {
+                  // websocket is closed.
+                  alert("Connection is closed...");
+               };
+            }
+
+            else
+            {
+               // The browser doesn't support WebSocket
+               alert("WebSocket NOT supported by your Browser!");
+            }
+         }
+</script>
+
+
+</html>

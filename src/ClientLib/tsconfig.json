@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "outDir": "./../Org.App.Web/wwwroot/app/",
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es5"
+  },
+  "compileOnSave": true,
+  "exclude": [
+    "node_modules",
+    "wwwroot",
+    "typings/index",
+    "typings/index.d.ts"
+  ]
+}
